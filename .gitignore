@@ -3,6 +3,8 @@ node_modules
 .env.deployment
 .env.production
 .env.local
+/.status
+/.status/vm-prague/status.json
 
 
 # Hardhat files
