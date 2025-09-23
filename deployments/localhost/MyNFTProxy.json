@@ -1,5 +1,5 @@
 {
-  "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+  "address": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
   "abi": [
     "constructor()",
     "error AddressEmptyCode(address)",
@@ -48,5 +48,5 @@
     "function transferOwnership(address)",
     "function upgradeToAndCall(address,bytes) payable"
   ],
-  "numDeployments": 1
+  "numDeployments": 2
 }

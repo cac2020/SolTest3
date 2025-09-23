@@ -19,6 +19,8 @@ module.exports = {
   },
   networks: {
     hardhat: {
+      //在配置文件中显式关闭硬分叉状态持久化（适用于所有网络）
+      persist: false,
     },
     // 本地节点（需先运行 npx hardhat node）
     localhost: {

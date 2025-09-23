@@ -47,7 +47,7 @@ module.exports = async function ({ deployments, getNamedAccounts }) {
   );
 
   // 3.保存实现合约部署信息
-  const storePath = path.resolve(__dirname, "../.cache/nAuctionFactory.json");
+  const storePath = path.resolve(__dirname, "../.cache/AuctionFactory.json");
   fs.writeFileSync(
     storePath,
     JSON.stringify({
