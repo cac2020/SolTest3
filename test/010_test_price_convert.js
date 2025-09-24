@@ -14,6 +14,7 @@ describe("PriceConverter", async () => {
   const INITIAL_PRICE = 200000000000; // $2000 with 8 decimals
 
   beforeEach(async () => {
+    const [deployer] = await ethers.getSigners();
     /**
      * MockV3Aggregator 是一个 模拟 Chainlink(依赖包：@chainlink/contracts) 价格聚合器的合约，主要用于 本地测试或开发环境
      * - 手动设置测试价格（如将 ETH 价格固定为 3000 USD）；
@@ -27,6 +28,14 @@ describe("PriceConverter", async () => {
     mockAggregator = await MockV3Aggregator.deploy(DECIMALS, INITIAL_PRICE);
     await mockAggregator.waitForDeployment();
     mockAddress = await mockAggregator.getAddress();
+
+    // await deployments.deploy("MockV3Aggregator", {
+    //   from: deployer.address,
+    //   args: [DECIMALS, INITIAL_PRICE],
+    //   log: true,
+    // });
+    // mockAggregator = await deployments.get("MockV3Aggregator");
+    // mockAddress = mockAggregator.address;
 
     //内联的library不能直接测试 因为会直接嵌入到引用合约里
     //部署测试合约 这里直接使用ethers里的部署方式
@@ -51,8 +60,17 @@ describe("PriceConverter", async () => {
     const PriceConverter = await ethers.getContractFactory("PriceConverter");
     contract = await PriceConverter.deploy();
     await contract.waitForDeployment();
-    //console.log("PriceConverter address:", await contract.getAddress());
+    console.log("PriceConverter address:", await contract.getAddress());
 
+    
+    // await deployments.deploy("PriceConverter", {
+    //   from: deployer.address,
+    //   args: [],
+    //   log: true,
+    // });
+    // contract = await deployments.get("PriceConverter");
+
+    console.log("PriceConverter:", contract);
   });
   /*
   describe("getLatestPrice", async () => {
